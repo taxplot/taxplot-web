@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { GlobalStateContext } from '../components/UserContext'
+import React from "react";
 import Layout from "../components/Layout";
 import { navigate } from 'gatsby';
 
@@ -9,23 +8,7 @@ import { auth, useAuth } from "gatsby-theme-firebase";
 
 const UserPage = () => {
     const { isLoggedIn, profile } = useAuth()
-  //const { userState } = useContext(GlobalStateContext)
 
-//   useEffect(() => {
-//     if (userState.loggedIn) {
-      
-//     }
-//     else {
-      
-//     }
-//   }, [userState]);
-
-
-//   function AdminButton() {
-
-//   }
-  
-  const something = "something something something"
 
   return (
     <Layout>
