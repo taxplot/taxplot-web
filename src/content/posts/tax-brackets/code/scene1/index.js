@@ -113,14 +113,17 @@ function Scene1 () {
 
 
   return (
-   <div style={prezMode.prezMode ? {'backgroundColor':theme.palette.prezBackground}:null}>
+    <div style={prezMode.prezMode ? {'backgroundColor':theme.palette.prezBackground}:null}>
+    {/*StScrolly uses window so cannot be built for ssr unless made conditional */}
+    {(typeof window !== 'undefined') && 
      <StScrolly
         triggerOffset={-200}
         renderBackground = { renderBackground }
         >
           {$slides}     
       </StScrolly>
-      
+    }
+  
     </div>
   )
 }

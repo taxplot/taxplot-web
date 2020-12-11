@@ -20,21 +20,24 @@ const TestPlot = ({slideIndex}) => {
     const [redArea, setRedArea] = useState(null)
     const [bracketArea, setBracketArea] = useState(null)
     const [dimensions, setDimensions] = React.useState({ 
-        height: window.innerHeight,
-        width: window.innerWidth
+        height: 700,
+        width: 1000
       })
 
-      React.useEffect(() => {
-        function handleResize() {
-          setDimensions({
-            height: window.innerHeight,
-            width: window.innerWidth
-          })
-        
-    }  
-        window.addEventListener('resize', handleResize)
-      })
 
+
+    const updateWindowDimensions = () => {
+        setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+    //get window dimensions
+    useEffect(() => {
+        updateWindowDimensions()
+        window.addEventListener('resize', updateWindowDimensions)
+        return () => {
+            window.removeEventListener('resize', updateWindowDimensions);
+        }
+    }, [])
 
     // Dollar slice variables
     const [showDollar, setShowDollar] = useState(false)
@@ -46,6 +49,8 @@ const TestPlot = ({slideIndex}) => {
     //adjustable Stroke Width
     const strokeWidth = 4
     
+
+
     // Animation sequence
     useEffect(() => {
         if (slideIndex <= 0) { 
@@ -265,7 +270,9 @@ const TestPlot = ({slideIndex}) => {
     return(
         <div>
         <div ref={ref} style={{height:!prezMode.prezMode ? 64 :0 }} />
-        <VictoryChart height={Math.round(dimensions.height*.88) } domain={{y:[0,maxPercent]}} animate={{ duration: 500 }}>
+        <VictoryChart domain={{y:[0,maxPercent]}} animate={{ duration: 500 }}
+        height={Math.round(dimensions.height * .88)}
+        >
             
             <VictoryArea //tax bracket highlight
                 style ={{

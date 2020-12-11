@@ -169,20 +169,6 @@ module.exports = {
         name: `markdown-posts`,
         path: `src/content/posts`
       }
-    },
-    {
-      resolve: "gatsby-plugin-prefetch-google-fonts",
-      options: {
-        fonts: [
-          {
-            family: "Roboto"
-          },
-          {
-            family: "Work Sans",
-            variants: ["800"]
-          }
-        ]
-      }
     }
   ],
 };

@@ -24,7 +24,6 @@
     "gatsby-plugin-manifest": "^2.4.17",
     "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-mdx": "^1.2.40",
-    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-sharp": "^2.6.36",
     "gatsby-source-filesystem": "^2.3.30",
     "gatsby-theme-firebase": "^1.0.10",
