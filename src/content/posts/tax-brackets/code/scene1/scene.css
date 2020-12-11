@@ -1,0 +1,78 @@
+.foreground {
+  position: sticky;
+  top: 0px;
+  width:100%;
+ 
+}
+
+.background_reg {
+  position: sticky;
+  top: 0px;
+  bottom: auto;
+  width: 50%;
+  float: right;
+  background-color: saddlebrown;
+  
+}
+
+.background_prez {
+  position: sticky;
+  top: 0px;
+  bottom: auto;
+  width: 50%;
+  float: left;
+  
+}
+
+.background .foreground {
+  box-sizing: border-box;
+}
+
+.background > div, .foreground > div {
+  position: relative;
+  
+}
+
+.foreground > div {
+  width: 100%;
+  /* background-color:#00b140; */
+  background-color: transparent;
+}
+
+.background > div {
+  top: 0px;
+  padding-bottom: 100;
+}
+
+.plot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.foreground-plot {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  padding: 10px;
+  padding-left: 40px;
+  font-weight: 700;
+}
+
+.slide {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  width:50%
+}
+
+.card {
+  display: inline-block;
+  width: 100%;
+  font-weight: 400;
+  text-align: left;
+  padding: 16px;
+}

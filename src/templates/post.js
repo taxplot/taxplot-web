@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import { makeStyles } from "@material-ui/styles";
-import Img from "gatsby-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Layout from "../components/Layout";
 import moment from "moment";
 import { Box, Button, Chip, Typography } from "@material-ui/core";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { GlobalContext } from "../components/RootContext"
 
 const useStyles = makeStyles(() => ({
   article: {
@@ -18,7 +18,25 @@ const useStyles = makeStyles(() => ({
       marginLeft: -16,
       paddingLeft: 13,
       fontStyle: "italic"
-    }
+    },
+    '& h1': {
+      fontFamily: 'monospace'
+    },
+    '& h2': {
+      fontFamily: 'monospace'
+    },
+    '& h3': {
+      fontFamily: 'monospace'
+    },
+    '& h4': {
+      fontFamily: 'monospace'
+    },
+    '& h5': {
+      fontFamily: 'monospace'
+    },
+    '& h6': {
+      fontFamily: 'monospace'
+    },
   },
   chip: {
     marginRight: 4
@@ -52,16 +70,17 @@ export default function PostTemplate({ data, pageContext }) {
   const classes = useStyles();
   const { mdx } = data;
   const {
-    frontmatter: { featuredImage, title, tags },
+    frontmatter: { title, tags },
     body
   } = mdx;
   const { previousPath, nextPath, postDate } = pageContext;
+  const prezMode = React.useContext(GlobalContext)
 
   return (
     <Layout>
-      <Box flexGrow={1} width="100%" maxWidth={960} marginX="auto">
-        <Box padding={2}>
-          <Box marginBottom={1}>
+      <Box flexGrow={1} width="100%"  marginX="auto" style={!prezMode.prezMode ? {backgroundColor:'beige'} : {backgroundColor:'transparent'}}>
+        <Box padding={ prezMode.prezMode ? 0 : 2 }>
+          {!prezMode.prezMode && <Box marginBottom={1}>
             <Typography
               variant="h4"
               style={{
@@ -75,12 +94,9 @@ export default function PostTemplate({ data, pageContext }) {
             <Typography variant="body2">
               {moment(postDate).format("LL")}
             </Typography>
-            <Tags tags={tags} />
-          </Box>
-          <Img
-            fluid={featuredImage.childImageSharp.fluid}
-            style={{ borderRadius: 2 }}
-          />
+            
+          </Box>}
+          
           <article className={classes.article}>
             <MDXRenderer>{body}</MDXRenderer>
           </article>
@@ -98,7 +114,8 @@ export default function PostTemplate({ data, pageContext }) {
                 </Button>
               )}
             </Box>
-            {nextPath && (
+            { !prezMode.prezMode && <Tags tags={tags} /> }
+            { nextPath && !prezMode.prezMode && (
               <Button
                 component={Link}
                 to={nextPath}

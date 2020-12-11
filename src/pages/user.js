@@ -7,7 +7,7 @@ import { auth, useAuth } from "gatsby-theme-firebase";
 
 
 const UserPage = () => {
-    const { isLoggedIn, profile } = useAuth()
+  const { isLoggedIn, profile } = useAuth()
 
 
   return (

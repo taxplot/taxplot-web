@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "taxplot"
+  },
+  "targets": {
+    "taxplot": {
+      "hosting": {
+        "taxplot": [
+          "taxplot"
+        ]
+      }
+    }
+  }
+}

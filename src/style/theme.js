@@ -8,6 +8,9 @@ export default createMuiTheme({
     secondary: {
       main: "#81924D"
     },
+    tertiary: {
+      main: "#bf5700"
+    },
     type: "light",
     text: {
       primary: "#101012",
@@ -21,6 +24,7 @@ export default createMuiTheme({
     },
     success: {
       main: "#28a745"
-    }
+    }, 
+    prezBackground: "#00b140"
   }
 });
