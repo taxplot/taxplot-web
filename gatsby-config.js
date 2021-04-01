@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `tax·plot`,
     siteUrl: `https://taxplot.com`,
-    description: `Tax can be entertaining.`,
+    description: `Stories about taxes.`,
     components: {
       appbar: {
         position: "sticky",

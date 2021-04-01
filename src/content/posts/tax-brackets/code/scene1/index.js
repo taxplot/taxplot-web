@@ -26,30 +26,30 @@ function Scene1 () {
   const sceneLength = slides.length
   console.log("num slides", sceneLength)
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    if(index < 0) {
-      setNextSlide("slide0")
-    } else if (index > sceneLength) {
-      setNextSlide("slide" + (sceneLength - 1))
-    } else {
-      setNextSlide("slide"+(index + 1))
-    }
+  //   if(index < 0) {
+  //     setNextSlide("slide0")
+  //   } else if (index > sceneLength) {
+  //     setNextSlide("slide" + (sceneLength - 1))
+  //   } else {
+  //     setNextSlide("slide"+(index + 1))
+  //   }
 
-    scroller.scrollTo(nextSlide, {
-      duration: 500,
-      smooth: true,
-    })
+  //   scroller.scrollTo(nextSlide, {
+  //     duration: 500,
+  //     smooth: true,
+  //   })
     
-  }, [index])
+  // }, [index])
 
-  useHotkeys('.', () => {
-    incrementIndex()
-  })
+  // useHotkeys('.', () => {
+  //   incrementIndex()
+  // })
 
-  useHotkeys(',', () => {
-    decrementIndex()
-  })
+  // useHotkeys(',', () => {
+  //   decrementIndex()
+  // })
  
 
 
