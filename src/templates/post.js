@@ -141,6 +141,7 @@ export const pageQuery = graphql`
         id
         title
         tags
+        publish
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 1280) {

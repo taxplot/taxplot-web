@@ -14,7 +14,7 @@ const Posts = ({ posts, pathPrefix }) => {
           node: {
             excerpt,
             fileAbsolutePath,
-            frontmatter: { id, title, featuredImage }
+            frontmatter: { id, title, featuredImage, publish }
           }
         }) => {
           const postDate = path
@@ -22,6 +22,7 @@ const Posts = ({ posts, pathPrefix }) => {
             .split("-")
             .splice(0, 3)
             .join("-");
+          if (publish) {
           return (
             <Grid item xs={12} sm={4} key={id}>
               <Card
@@ -32,7 +33,8 @@ const Posts = ({ posts, pathPrefix }) => {
                 excerpt={excerpt}
               />
             </Grid>
-          );
+          );}
+          return <div />
         }
       )}
     </Grid>
@@ -93,6 +95,7 @@ export const pageQuery = graphql`
           frontmatter {
             id
             title
+            publish
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 720) {

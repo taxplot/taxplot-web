@@ -7,6 +7,7 @@ import { Box, Button, Grid, Typography } from "@material-ui/core";
 import theme from "../style/theme";
 import { useHasScroll } from "has-scroll-hook";
 
+
 const Posts = ({ posts, pathPrefix }) => {
   return (
     <Grid container spacing={3}>
@@ -15,7 +16,7 @@ const Posts = ({ posts, pathPrefix }) => {
           node: {
             excerpt,
             fileAbsolutePath,
-            frontmatter: { id, title, featuredImage },
+            frontmatter: { id, title, featuredImage, publish },
           },
         }) => {
           const postDate = path
@@ -23,7 +24,9 @@ const Posts = ({ posts, pathPrefix }) => {
             .split("-")
             .splice(0, 3)
             .join("-");
+          if (publish) {
           return (
+            
             <Grid item xs={12} sm={4} key={id}>
               <Card
                 featuredImage={featuredImage}
@@ -33,7 +36,10 @@ const Posts = ({ posts, pathPrefix }) => {
                 excerpt={excerpt}
               />
             </Grid>
+            
           );
+          }
+          return <div />
         }
       )}
     </Grid>
@@ -69,7 +75,7 @@ export default function HomeTemplate({
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.common.white,
             clipPath: "polygon(0 0, 100% 0, 100% 60%, 0% 100%)",
-            WebkitClipPath: "polygon(0 0, 100% 0, 100% 60%, 0% 100%)",
+            WebkitClipPath: "polygon(0 0, 100% 0, 100% 65%, 0% 100%)",
           }}
         >
           <Box marginBottom={4}>
@@ -86,7 +92,7 @@ export default function HomeTemplate({
             >
               {title}
             </Typography>
-            <Typography color="inherit" variant="body1">
+            <Typography color='inherit' variant="body1">
               {description}
             </Typography>
           </Box>
@@ -94,6 +100,7 @@ export default function HomeTemplate({
       </Box>
       <Box flexGrow={1} marginX="auto" width="100%" maxWidth={960}>
         <Box padding={2}>
+          <h2>Articles</h2>
           <Posts posts={posts} pathPrefix={pathPrefix} />
           {posts.length > 1 && (
             <Box
@@ -143,6 +150,7 @@ export const pageQuery = graphql`
           frontmatter {
             id
             title
+            publish
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 720) {

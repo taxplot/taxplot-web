@@ -62,6 +62,7 @@ export default ({ elevation = 1, onToggleDrawer }) => {
           site {
             siteMetadata {
               title
+              description
               components {
                 appbar {
                   position
@@ -79,6 +80,7 @@ export default ({ elevation = 1, onToggleDrawer }) => {
         site: {
           siteMetadata: {
             title,
+            description,
             components: {
               appbar: { links, position }
             }

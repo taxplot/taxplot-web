@@ -83,6 +83,64 @@ export const rates2021single =
             }
           ]
 
+          export const rates2021singleCA = 
+          [
+            {
+              "amountsAbove": 0,
+              "amountsNotMoreThan": 8932,
+              "plusAmount": 0,
+              "rate": 0.01
+            },
+            {
+              "amountsAbove": 8932,
+              "amountsNotMoreThan": 21175,
+              "plusAmount": 89.32,
+              "rate": 0.02
+            },
+            {
+              "amountsAbove": 21175,
+              "amountsNotMoreThan": 33421,
+              "plusAmount": 334.18,
+              "rate": 0.04
+            },
+            {
+              "amountsAbove": 33421,
+              "amountsNotMoreThan": 46394,
+              "plusAmount": 824.02,
+              "rate": 0.06
+            },
+            {
+              "amountsAbove": 46394,
+              "amountsNotMoreThan": 58634,
+              "plusAmount": 1602.4,
+              "rate": 0.08
+            },
+            {
+              "amountsAbove": 58634,
+              "amountsNotMoreThan": 299508,
+              "plusAmount": 2581.6,
+              "rate": 0.093
+            },
+            {
+              "amountsAbove": 299508,
+              "amountsNotMoreThan": 359407,
+              "plusAmount": 24982.88,
+              "rate": 0.103
+            },
+            {
+              "amountsAbove": 359407,
+              "amountsNotMoreThan": 599012,
+              "plusAmount": 31152.48,
+              "rate": 0.113
+            },
+            {
+              "amountsAbove": 599012,
+              "amountsNotMoreThan": null,
+              "plusAmount": 58227.85,
+              "rate": 0.123
+            }
+          ]
+
 export const deduction1861 = 0
 export const deduction1862 = 0
 export const deduction2021single = 12550

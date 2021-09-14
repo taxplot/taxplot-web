@@ -46,8 +46,9 @@
     "react-modal": "^3.12.1",
     "react-new-window": "^0.1.2",
     "react-scroll": "^1.8.1",
+    "recharts": "^2.0.9",
     "styled-components": "^5.2.3",
-    "victory": "^35.5.1"
+    "victory": "^35.8.4"
   },
   "repository": {
     "type": "git",

@@ -26,34 +26,6 @@ function Scene1 () {
   const sceneLength = slides.length
   console.log("num slides", sceneLength)
 
-  // useEffect(() => {
-    
-  //   if(index < 0) {
-  //     setNextSlide("slide0")
-  //   } else if (index > sceneLength) {
-  //     setNextSlide("slide" + (sceneLength - 1))
-  //   } else {
-  //     setNextSlide("slide"+(index + 1))
-  //   }
-
-  //   scroller.scrollTo(nextSlide, {
-  //     duration: 500,
-  //     smooth: true,
-  //   })
-    
-  // }, [index])
-
-  // useHotkeys('.', () => {
-  //   incrementIndex()
-  // })
-
-  // useHotkeys(',', () => {
-  //   decrementIndex()
-  // })
- 
-
-
-
   const $slides = slides.map((slide, i) => (
     
       <div className="slide" style={prezMode.prezMode ? {'visibility':'hidden'} : null}key={i} id={"slide" + i}>
@@ -62,7 +34,6 @@ function Scene1 () {
       </div>
   ))
 
-  //const renderForeground = ({slideIndex}) => {
   const renderForeground = ({slideIndex}) => {
     return (
       <div style={{

@@ -1,27 +1,27 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
     title: `tax·plot`,
     siteUrl: `https://taxplot.com`,
-    description: `Stories about taxes.`,
+    description: `Tax advice for the data-driven.`,
     components: {
       appbar: {
-        position: "sticky",
+        position: 'sticky',
         links: [
           // {
           //   title: "about",
           //   url: "/doc1",
           // },
-          // {
-          //   title: "docs",
-          //   url: "/doc1",
-          // },
           {
-            title: "contact",
-            url: "/contact",
+            title: 'docs',
+            url: '/doc1',
+          },
+          {
+            title: 'contact',
+            url: '/contact',
           },
           // {
           //   title: "login",
@@ -30,56 +30,56 @@ module.exports = {
         ],
       },
       footer: {
-        copyright: "taxplot.com",
+        copyright: 'taxplot.com',
         columns: [
           {
-            heading: "Column 1",
+            heading: 'Column 1',
             links: [
               {
-                title: "Link 1",
-                url: "#",
+                title: 'Link 1',
+                url: '#',
               },
               {
-                title: "Link 2",
-                url: "#",
+                title: 'Link 2',
+                url: '#',
               },
               {
-                title: "Link 3",
-                url: "#",
+                title: 'Link 3',
+                url: '#',
               },
             ],
           },
           {
-            heading: "Column 2",
+            heading: 'Column 2',
             links: [
               {
-                title: "Link A",
-                url: "#",
+                title: 'Link A',
+                url: '#',
               },
               {
-                title: "Link B",
-                url: "#",
+                title: 'Link B',
+                url: '#',
               },
               {
-                title: "Link C",
-                url: "#",
+                title: 'Link C',
+                url: '#',
               },
             ],
           },
           {
-            heading: "Column 3",
+            heading: 'Column 3',
             links: [
               {
-                title: "Link x",
-                url: "#",
+                title: 'Link x',
+                url: '#',
               },
               {
-                title: "Link y",
-                url: "#",
+                title: 'Link y',
+                url: '#',
               },
               {
-                title: "Link z",
-                url: "#",
+                title: 'Link z',
+                url: '#',
               },
             ],
           },
@@ -89,29 +89,29 @@ module.exports = {
     templates: {
       home: {
         totalPosts: 3,
-        template: "home",
+        template: 'home',
       },
       pages: {
-        path: "/content/pages/",
-        template: "page",
+        path: '/content/pages/',
+        template: 'page',
       },
       posts: {
-        path: "/content/posts/",
-        pathPrefix: "posts",
-        template: "post",
+        path: '/content/posts/',
+        pathPrefix: 'posts',
+        template: 'post',
         filters: {
           tag: {
-            pathPrefixTag: "tag",
-            template: "tag",
+            pathPrefixTag: 'tag',
+            template: 'tag',
             totalPosts: 3,
             pagination: {
-              template: "resultsTag",
+              template: 'resultsTag',
               resultsPerPage: 6,
             },
           },
         },
         pagination: {
-          template: "resultsAll",
+          template: 'resultsAll',
           resultsPerPage: 6,
         },
       },
@@ -119,7 +119,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-theme-firebase",
+      resolve: 'gatsby-theme-firebase',
       options: {
         credentials: {
           apiKey: process.env.FIREBASE_API_KEY,
@@ -130,9 +130,9 @@ module.exports = {
           messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
           appId: process.env.FIREBASE_APP_ID,
         },
-        loginPath: "/login",
-        loginRedirectPath: "/",
-        socialLogins: ["google"],
+        loginPath: '/login',
+        loginRedirectPath: '/',
+        socialLogins: ['google'],
       },
     },
     {
@@ -153,22 +153,22 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [`.mdx`, `.md`]
-      }
+        extensions: [`.mdx`, `.md`],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `src/content/pages`
-      }
+        path: `src/content/pages`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-posts`,
-        path: `src/content/posts`
-      }
-    }
+        path: `src/content/posts`,
+      },
+    },
   ],
 };
