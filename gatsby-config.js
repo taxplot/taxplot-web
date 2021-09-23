@@ -15,10 +15,10 @@ module.exports = {
           //   title: "about",
           //   url: "/doc1",
           // },
-          {
-            title: 'docs',
-            url: '/doc1',
-          },
+          // {
+          //   title: 'docs',
+          //   url: '/doc1',
+          // },
           {
             title: 'contact',
             url: '/contact',

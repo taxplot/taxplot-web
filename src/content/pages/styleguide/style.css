@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+.colorBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.colorBlock > div {
+  font-family: monospace;
+  padding: 0.5em;
+  color: white;
+  margin: 5px;
+  border-radius: 3px;
+  border: 3px solid black;
+}

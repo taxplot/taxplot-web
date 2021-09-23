@@ -1,23 +1,44 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { makeStyles } from "@material-ui/styles";
-import Img from "gatsby-image";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import Layout from "../components/Layout";
-import { Box, Typography } from "@material-ui/core";
+import React from 'react';
+import { graphql } from 'gatsby';
+import { makeStyles } from '@material-ui/styles';
+import Img from 'gatsby-image';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from '../components/Layout';
+import { Box, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   article: {
     lineHeight: 1.6,
-    fontFamily: "Merriweather, Georgia, serif",
-    fontSize: "1.1rem",
-    "& blockquote": {
-      borderLeft: "3px solid #303032",
+    fontFamily: 'Merriweather, Georgia, serif',
+    fontSize: '1.1rem',
+    '& blockquote': {
+      borderLeft: '3px solid #303032',
       marginLeft: -16,
       paddingLeft: 13,
-      fontStyle: "italic"
-    }
-  }
+      fontStyle: 'italic',
+    },
+    '& h1': {
+      fontFamily: 'monospace',
+    },
+    '& h2': {
+      fontFamily: 'monospace',
+    },
+    '& h3': {
+      fontFamily: 'monospace',
+    },
+    '& h4': {
+      fontFamily: 'monospace',
+    },
+    '& h5': {
+      fontFamily: 'monospace',
+    },
+    '& h6': {
+      fontFamily: 'monospace',
+    },
+  },
+  chip: {
+    marginRight: 4,
+  },
 }));
 
 export default function PageTemplate({ data }) {
@@ -25,7 +46,7 @@ export default function PageTemplate({ data }) {
   const { mdx } = data;
   const {
     frontmatter: { featuredImage, title },
-    body
+    body,
   } = mdx;
   return (
     <Layout>
@@ -35,19 +56,18 @@ export default function PageTemplate({ data }) {
             <Typography
               variant="h4"
               style={{
-                fontFamily:
-                  "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif"
+                fontFamily: 'monospace',
               }}
             >
               {title}
             </Typography>
           </Box>
-          { featuredImage &&
+          {featuredImage && (
             <Img
               fluid={featuredImage.childImageSharp.fluid}
               style={{ borderRadius: 2 }}
             />
-          }
+          )}
           <article className={classes.article}>
             <MDXRenderer>{body}</MDXRenderer>
           </article>
