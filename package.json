@@ -17,6 +17,7 @@
     "@mdx-js/react": "^1.6.6",
     "@st-graphics/react-scrolly": "0.0.11",
     "@taxplot/calc": "^1.0.4",
+    "d3": "^7.1.1",
     "dotenv": "^8.2.0",
     "fullscreen-react": "^1.0.4",
     "gatsby": "^3.4.0",
@@ -48,6 +49,7 @@
     "react-scroll": "^1.8.1",
     "recharts": "^2.0.9",
     "styled-components": "^5.2.3",
+    "topojson-client": "^3.1.0",
     "victory": "^35.8.4"
   },
   "repository": {

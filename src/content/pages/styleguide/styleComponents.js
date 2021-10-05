@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const ColorContainer = ({ palette }) => {
-  console.log(palette);
   return (
     <div className="colorBlock">
       {palette.map((color) => (
