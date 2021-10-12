@@ -1,59 +1,58 @@
-import React from "react";
-import { useAuth } from "gatsby-theme-firebase";
-import { Link, StaticQuery, graphql } from "gatsby";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { useAuth } from 'gatsby-theme-firebase';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Box,
   ButtonBase,
   IconButton,
   Toolbar,
-  useMediaQuery
-} from "@material-ui/core";
-import { MdMenu } from "react-icons/md";
+  useMediaQuery,
+} from '@material-ui/core';
+import { MdMenu } from 'react-icons/md';
 
 //const {userState, setUserState} = useContext(GlobalStateContext)
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   menuButton: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   titleButton: {
     padding: theme.spacing(1),
-    borderRadius: "4px",
-    transition: "background-color .125s ease",
-    fontSize: "1.5rem",
-    fontFamily: "monospace",
-    "&:first-child": {
+    borderRadius: '4px',
+    transition: 'background-color .125s ease',
+    fontSize: '1.5rem',
+    fontFamily: 'monospace',
+    '&:first-child': {
       // Site title.
-      fontSize: "2rem",
-      fontFamily:
-        "monospace, sans-serif"
-    }
-  }
+      fontSize: '2rem',
+      fontFamily: 'monospace, sans-serif',
+    },
+  },
 }));
 
 const AppBarLinks = ({ links }) => {
-  const { isLoggedIn, profile } = useAuth()
+  const { isLoggedIn } = useAuth(); //{isLoggedIn,profile}
   const classes = useStyles();
 
-  return links.map(link => {
+  return links.map((link) => {
     return (
       <ButtonBase
         component={Link}
-        to={link.title === "login" && isLoggedIn?"/user":link.url}
+        to={link.title === 'login' && isLoggedIn ? '/user' : link.url}
         classes={{ root: classes.titleButton }}
         key={link.title}
       >
-        {link.title === "login" && isLoggedIn?"account":link.title}
+        {link.title === 'login' && isLoggedIn ? 'account' : link.title}
       </ButtonBase>
     );
   });
 };
 
-export default ({ elevation = 1, onToggleDrawer }) => {
+export const Appbar = ({ elevation = 1, onToggleDrawer }) => {
   const classes = useStyles();
-  const isXs = useMediaQuery(theme => theme.breakpoints.down("xs"));
+  const isXs = useMediaQuery((theme) => theme.breakpoints.down('xs'));
 
   return (
     <StaticQuery
@@ -82,10 +81,10 @@ export default ({ elevation = 1, onToggleDrawer }) => {
             title,
             description,
             components: {
-              appbar: { links, position }
-            }
-          }
-        }
+              appbar: { links, position },
+            },
+          },
+        },
       }) => (
         <AppBar color="primary" position={position} elevation={elevation}>
           <Toolbar>
@@ -109,8 +108,10 @@ export default ({ elevation = 1, onToggleDrawer }) => {
                 {title}
               </ButtonBase>
             </Box>
-            {// Display the appbar action links if the media query breakpoint is larger than Xs.
-            !isXs && <AppBarLinks links={links} />}
+            {
+              // Display the appbar action links if the media query breakpoint is larger than Xs.
+              !isXs && <AppBarLinks links={links} />
+            }
           </Toolbar>
         </AppBar>
       )}

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { makeStyles } from '@material-ui/styles';
 import Img from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import { Box, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({

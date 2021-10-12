@@ -1,7 +1,7 @@
-import React from "react";
-import Layout from "../components/Layout";
-import { Box, Typography } from "@material-ui/core";
-import theme from "../style/theme";
+import React from 'react';
+import { Layout } from '../components/Layout';
+import { Box, Typography } from '@material-ui/core';
+import theme from '../style/theme';
 
 export default function ContactMe() {
   return (
@@ -14,7 +14,7 @@ export default function ContactMe() {
           paddingBottom={12}
           paddingX={8}
           style={{
-            color: theme.palette.common.gray
+            color: theme.palette.common.gray,
           }}
         >
           <Box marginBottom={4}>
@@ -22,15 +22,13 @@ export default function ContactMe() {
               color="inherit"
               variant="h2"
               style={{
-                fontWeight: "bold",
-                fontFamily:
-                  "monospace",
-                marginBottom: 4
+                fontWeight: 'bold',
+                fontFamily: 'monospace',
+                marginBottom: 4,
               }}
             >
               chris@taxplot.com
             </Typography>
-            
           </Box>
         </Box>
       </Box>

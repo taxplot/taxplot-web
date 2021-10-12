@@ -1,29 +1,29 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Container, Typography } from "@material-ui/core";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box, Container, Typography } from '@material-ui/core';
 //import Link from "../components/Link";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   footer: {
     color: theme.palette.common.white,
     backgroundColor: theme.palette.grey[900],
-    "& a": {
+    '& a': {
       color: theme.palette.grey[300],
-      textDecoration: "none",
-      fontSize: ".9rem"
+      textDecoration: 'none',
+      fontSize: '.9rem',
     },
-    "& a:hover": {
-      textDecoration: "underline"
+    '& a:hover': {
+      textDecoration: 'underline',
     },
-    "& ul": {
+    '& ul': {
       padding: 0,
-      listStyle: "none"
+      listStyle: 'none',
     },
-    "& li": {
-      marginBottom: theme.spacing(0.5)
-    }
-  }
+    '& li': {
+      marginBottom: theme.spacing(0.5),
+    },
+  },
 }));
 
 // const FooterColumns = ({ columns }) => {
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 //   );
 // };
 
-export default () => {
+export const Footer = () => {
   const classes = useStyles();
 
   return (
@@ -80,16 +80,16 @@ export default () => {
         site: {
           siteMetadata: {
             components: {
-              footer: { columns, copyright }
-            }
-          }
-        }
+              footer: { columns, copyright },
+            },
+          },
+        },
       }) => {
         return (
           <Box component="footer" className={classes.footer}>
             <Container maxWidth="md">
               <Box padding={4}>
-              {/*
+                {/*
                 <FooterColumns columns={columns} />
         */}
                 <Box textAlign="center" marginTop={2}>

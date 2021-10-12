@@ -1,42 +1,48 @@
-import React from "react";
-import path from "path";
-import { graphql, navigate } from "gatsby";
-import Layout from "../components/Layout";
-import Card from "../components/Card";
-import { Box, Grid } from "@material-ui/core";
-import Pagination from "materialui-pagination-component";
+import React from 'react';
+import path from 'path';
+import { graphql, navigate } from 'gatsby';
+import { Layout } from '../components/Layout';
+import { TaxCard } from '../components/Card';
+import { Box, Grid } from '@material-ui/core';
+import Pagination from 'materialui-pagination-component';
+import { postSort } from '../components/postSort';
 
 const Posts = ({ posts, pathPrefix }) => {
   return (
     <Grid container spacing={3}>
-      {posts.map(
-        ({
-          node: {
-            excerpt,
-            fileAbsolutePath,
-            frontmatter: { id, title, featuredImage, publish }
+      {posts
+        .map(
+          ({
+            node: {
+              excerpt,
+              fileAbsolutePath,
+              frontmatter: { id, title, featuredImage, publish },
+            },
+          }) => {
+            const postDate = path
+              .basename(fileAbsolutePath)
+              .split('-')
+              .splice(0, 3)
+              .join('-');
+            if (publish) {
+              return (
+                <Grid item xs={12} sm={4} key={id}>
+                  <TaxCard
+                    featuredImage={featuredImage}
+                    title={title}
+                    url={`/${pathPrefix}/${id}`}
+                    postDate={postDate}
+                    excerpt={excerpt}
+                    key={id + 'card'}
+                  />
+                </Grid>
+              );
+            }
+            return <div key={1} />;
           }
-        }) => {
-          const postDate = path
-            .basename(fileAbsolutePath)
-            .split("-")
-            .splice(0, 3)
-            .join("-");
-          if (publish) {
-          return (
-            <Grid item xs={12} sm={4} key={id}>
-              <Card
-                featuredImage={featuredImage}
-                title={title}
-                url={`/${pathPrefix}/${id}`}
-                postDate={postDate}
-                excerpt={excerpt}
-              />
-            </Grid>
-          );}
-          return <div />
-        }
-      )}
+        )
+        //there was some weird ordering going on. This should fix it.
+        .sort((firstEl, secondEl) => postSort(firstEl, secondEl))}
     </Grid>
   );
 };
@@ -46,13 +52,13 @@ export default function ResultsAllTemplate({
     site: {
       siteMetadata: {
         templates: {
-          posts: { pathPrefix }
-        }
-      }
+          posts: { pathPrefix },
+        },
+      },
     },
-    allMdx: { edges: posts }
+    allMdx: { edges: posts },
   },
-  pageContext: { totalPages, currentPage }
+  pageContext: { totalPages, currentPage },
 }) {
   return (
     <Layout>
@@ -63,7 +69,7 @@ export default function ResultsAllTemplate({
             selectVariant="tab"
             page={currentPage}
             totalPages={totalPages}
-            onChange={page => navigate(`/${pathPrefix}/page/${page}`)}
+            onChange={(page) => navigate(`/${pathPrefix}/page/${page}`)}
           />
         </Box>
       </Box>

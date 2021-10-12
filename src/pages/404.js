@@ -1,7 +1,7 @@
-import React from "react";
-import Layout from "../components/Layout";
-import { Box, Typography } from "@material-ui/core";
-import theme from "../style/theme";
+import React from 'react';
+import { Layout } from '../components/Layout';
+import { Box, Typography } from '@material-ui/core';
+import theme from '../style/theme';
 
 export default function Error404Template() {
   return (
@@ -15,7 +15,7 @@ export default function Error404Template() {
           paddingX={8}
           style={{
             backgroundColor: theme.palette.primary.main,
-            color: theme.palette.common.white
+            color: theme.palette.common.white,
           }}
         >
           <Box marginBottom={4}>
@@ -23,10 +23,10 @@ export default function Error404Template() {
               color="inherit"
               variant="h2"
               style={{
-                fontWeight: "bold",
+                fontWeight: 'bold',
                 fontFamily:
-                  "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
-                marginBottom: 4
+                  'Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif',
+                marginBottom: 4,
               }}
             >
               404 Error

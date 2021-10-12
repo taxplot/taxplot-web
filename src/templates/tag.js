@@ -1,9 +1,9 @@
-import React from "react";
-import path from "path";
-import { Link, graphql } from "gatsby";
-import Layout from "../components/Layout";
-import Card from "../components/Card";
-import { Box, Button, Divider, Grid, Typography } from "@material-ui/core";
+import React from 'react';
+import path from 'path';
+import { Link, graphql } from 'gatsby';
+import { Layout } from '../components/Layout';
+import { TaxCard } from '../components/Card';
+import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
 
 const Posts = ({ posts, pathPrefix }) => {
   return (
@@ -18,12 +18,12 @@ const Posts = ({ posts, pathPrefix }) => {
         }) => {
           const postDate = path
             .basename(fileAbsolutePath)
-            .split("-")
+            .split('-')
             .splice(0, 3)
-            .join("-");
+            .join('-');
           return (
             <Grid item xs={12} sm={4} key={id}>
-              <Card
+              <TaxCard
                 featuredImage={featuredImage}
                 title={title}
                 url={`/${pathPrefix}/${id}`}
@@ -66,11 +66,11 @@ export default function TagTemplate({
                 color="primary"
                 variant="h3"
                 style={{
-                  fontWeight: "bold",
+                  fontWeight: 'bold',
                   fontFamily:
-                    "Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif",
+                    'Work Sans, -apple-system, BlinkMacSystemFont, Roboto, sans-serif',
                   marginBottom: 4,
-                  textDecoration: "none",
+                  textDecoration: 'none',
                 }}
               >
                 #{tag}

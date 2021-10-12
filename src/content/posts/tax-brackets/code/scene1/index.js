@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TestPlot } from '../plot';
 import slides from './slides';
-import { useHotkeys } from 'react-hotkeys-hook';
 import NewWindow from 'react-new-window';
-import Draggable from 'react-draggable';
+//import Draggable from 'react-draggable';
 
 import './bundle.css';
 import StScrolly from '@st-graphics/react-scrolly';
@@ -11,18 +10,14 @@ import StScrolly from '@st-graphics/react-scrolly';
 import './scene.css';
 import { GlobalContext } from '../../../../../components/RootContext';
 
-import { scroller, Element } from 'react-scroll';
+import { Element } from 'react-scroll';
 import theme from '../../../../../style/theme';
 
 function Scene1() {
   const prezMode = React.useContext(GlobalContext);
-  const [index, setIndex] = useState(-1);
-  const [nextSlide, setNextSlide] = useState('slide1');
+  //const [index, setIndex] = useState(-1);
 
-  const incrementIndex = () => setIndex((prevState) => prevState + 1);
-  const decrementIndex = () => setIndex((prevState) => prevState - 1);
-
-  const sceneLength = slides.length;
+  const index = -1;
 
   const $slides = slides.map((slide, i) => (
     <div
@@ -38,42 +33,42 @@ function Scene1() {
     </div>
   ));
 
-  const renderForeground = ({ slideIndex }) => {
-    return (
-      <div
-        style={{
-          height: '100%',
-          width: '100%',
-        }}
-      >
-        <Draggable
-          axis="both"
-          handle=".handle"
-          defaultPosition={{ x: 0, y: 0 }}
-          position={null}
-          grid={[25, 25]}
-          scale={1}
-        >
-          <div className="handle" style={{ width: '50%' }}>
-            <TestPlot slideIndex={index} />
-          </div>
-        </Draggable>
-        <NewWindow title="Script">
-          <div
-            style={{
-              padding: '20',
-              backgroundColor: 'black',
-              color: 'yellow',
-              height: '100%',
-            }}
-          >
-            {index}
-            {slides[index]}
-          </div>
-        </NewWindow>
-      </div>
-    );
-  };
+  // const renderForeground = ({ slideIndex }) => {
+  //   return (
+  //     <div
+  //       style={{
+  //         height: '100%',
+  //         width: '100%',
+  //       }}
+  //     >
+  //       <Draggable
+  //         axis="both"
+  //         handle=".handle"
+  //         defaultPosition={{ x: 0, y: 0 }}
+  //         position={null}
+  //         grid={[25, 25]}
+  //         scale={1}
+  //       >
+  //         <div className="handle" style={{ width: '50%' }}>
+  //           <TestPlot slideIndex={index} />
+  //         </div>
+  //       </Draggable>
+  //       <NewWindow title="Script">
+  //         <div
+  //           style={{
+  //             padding: '20',
+  //             backgroundColor: 'black',
+  //             color: 'yellow',
+  //             height: '100%',
+  //           }}
+  //         >
+  //           {index}
+  //           {slides[index]}
+  //         </div>
+  //       </NewWindow>
+  //     </div>
+  //   );
+  // };
 
   const renderBackground = ({ slideIndex }) => {
     return (
