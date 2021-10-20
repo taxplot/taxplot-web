@@ -9,7 +9,6 @@ import { useHasScroll } from 'has-scroll-hook';
 import { postSort } from '../components/postSort';
 
 const Posts = ({ posts, pathPrefix }) => {
-  console.log(posts);
   return (
     <Grid container spacing={3}>
       {posts

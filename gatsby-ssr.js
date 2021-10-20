@@ -1,8 +1,41 @@
-import React from "react";
-import { ThemeProvider } from "@material-ui/styles";
-import theme from "./src/style/theme";
-import RootContext from "./src/components/RootContext"
+import React from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+import theme from './src/style/theme';
+import RootContext from './src/components/RootContext';
+import { Helmet } from 'react-helmet';
 
+export const onRenderBody = (
+  { setHeadComponents, setHtmlAttributes, setBodyAttributes },
+  pluginOptions
+) => {
+  const helmet = Helmet.renderStatic();
+  setHtmlAttributes(helmet.htmlAttributes.toComponent());
+  setBodyAttributes(helmet.bodyAttributes.toComponent());
+  setHeadComponents([
+    helmet.title.toComponent(),
+    helmet.link.toComponent(),
+    helmet.meta.toComponent(),
+    helmet.noscript.toComponent(),
+    helmet.script.toComponent(),
+    helmet.style.toComponent(),
+  ]);
+};
+
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
+  const headComponents = getHeadComponents();
+  headComponents.sort((x, y) => {
+    if (x.props && x.props['data-react-helmet']) {
+      return -1;
+    } else if (y.props && y.props['data-react-helmet']) {
+      return 1;
+    }
+    return 0;
+  });
+  replaceHeadComponents(headComponents);
+};
 
 export const wrapRootElement = ({ element }) => (
   <RootContext>

@@ -1,4 +1,5 @@
 const path = require(`path`);
+const { createOpenGraphImage } = require('gatsby-plugin-open-graph-images');
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
@@ -56,7 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const createMarkdownPages = async ({
     regex,
     template,
-    pathPrefix = "",
+    pathPrefix = '',
     paginate = false,
   }) => {
     const result = await graphql(`
@@ -71,6 +72,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 							fileAbsolutePath
 							frontmatter {
 								id
+                featuredImage{
+                  absolutePath
+                }
 							}
 						}
 					}
@@ -96,12 +100,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       // Use a permalink based on the frontmatter id in each markdown file header.
       const postId = node.frontmatter.id;
 
+      console.log(
+        'picture absolute path',
+        node.frontmatter.featuredImage.absolutePath
+      );
       // Define the date based on the filename.
       const postDate = path
         .basename(node.fileAbsolutePath)
-        .split("-")
+        .split('-')
         .splice(0, 3)
-        .join("-");
+        .join('-');
 
       // The path to the previous page.
       const previousPath =
@@ -123,6 +131,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           postDate,
           previousPath,
           nextPath,
+          ogImage: createOpenGraphImage(createPage, {
+            path: `${pathPrefix}/${postId}/og-image.png`,
+            component: path.resolve(`src/templates/og-image.js`),
+            context: { postId },
+          }),
         },
       });
     });
@@ -150,7 +163,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   // Find all of the tags used in posts and create search result pages.
   const createPostTagFilterPages = async ({
-    pathPrefixTag = "",
+    pathPrefixTag = '',
     paginate = false,
     template,
   }) => {
@@ -234,7 +247,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   return await Promise.all([
     //Create the home page with paginated results views.
     createPage({
-      path: "/",
+      path: '/',
       component: path.resolve(
         `${__dirname}/src/templates/${templates.home.template}.js`
       ),
@@ -269,10 +282,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-   resolve: {
+    resolve: {
       fallback: {
         path: require.resolve('path-browserify'),
       },
     },
-  })
-}
+  });
+};

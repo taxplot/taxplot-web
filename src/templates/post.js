@@ -70,14 +70,14 @@ export default function PostTemplate({ data, pageContext }) {
   const classes = useStyles();
   const { mdx } = data;
   const {
-    frontmatter: { title, tags },
+    frontmatter: { id, title, tags },
     body,
   } = mdx;
   const { previousPath, nextPath, postDate } = pageContext;
   const prezMode = React.useContext(GlobalContext);
 
   return (
-    <Layout>
+    <Layout id={id} folder="posts">
       <Box
         flexGrow={1}
         width="100%"
