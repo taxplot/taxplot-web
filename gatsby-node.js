@@ -100,10 +100,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       // Use a permalink based on the frontmatter id in each markdown file header.
       const postId = node.frontmatter.id;
 
-      console.log(
-        'picture absolute path',
-        node.frontmatter.featuredImage.absolutePath
-      );
       // Define the date based on the filename.
       const postDate = path
         .basename(node.fileAbsolutePath)

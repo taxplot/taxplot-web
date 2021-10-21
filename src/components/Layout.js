@@ -24,8 +24,6 @@ export const Layout = ({
     ? 'https://taxplot.com/' + folder + '/' + id + '/og-image.png'
     : 'https://taxplot.com/taxplot-title.png';
 
-  console.log(ogImageLink);
-
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
